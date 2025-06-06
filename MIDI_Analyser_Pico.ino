@@ -238,19 +238,11 @@ void updateDisplay() {
       tft.setTextColor(TFT_YELLOW);
       switch (paramNumber) {
         case 0:
-          // note_filter = EEPROM.read(EEPROM_NOTES);
-          // if (note_filter < 0 || note_filter > 1) {
-          //   EEPROM.write(EEPROM_NOTES, 0);
-          // }
           tft.println("Notes");
           displayValue(note_filter);
           break;
 
         case 1:
-          // aftertouch_filter = EEPROM.read(EEPROM_AFTERTOUCH);
-          // if (aftertouch_filter < 0 || aftertouch_filter > 1) {
-          //   EEPROM.write(EEPROM_AFTERTOUCH, 0);
-          // }
           tft.println("After");
           tft.setCursor(0, 50);
           tft.println("Touch");
@@ -258,19 +250,11 @@ void updateDisplay() {
           break;
 
         case 2:
-          // bend_filter = EEPROM.read(EEPROM_PITCHBEND);
-          // if (bend_filter < 0 || bend_filter > 1) {
-          //   EEPROM.write(EEPROM_PITCHBEND, 0);
-          // }
           tft.println("PitchBend");
           displayValue(bend_filter);
           break;
 
         case 3:
-          // mod_filter = EEPROM.read(EEPROM_MODULATION);
-          // if (mod_filter < 0 || mod_filter > 1) {
-          //   EEPROM.write(EEPROM_MODULATION, 0);
-          // }
           tft.println("Mod");
           tft.setCursor(0, 50);
           tft.println("Wheel");
@@ -278,37 +262,21 @@ void updateDisplay() {
           break;
 
         case 4:
-          // program_filter = EEPROM.read(EEPROM_PROGRAM);
-          // if (program_filter < 0 || program_filter > 1) {
-          //   EEPROM.write(EEPROM_PROGRAM, 0);
-          // }
           tft.println("Program");
           displayValue(program_filter);
           break;
 
         case 5:
-          // realtime_filter = EEPROM.read(EEPROM_REALTIME);
-          // if (realtime_filter < 0 || realtime_filter > 1) {
-          //   EEPROM.write(EEPROM_REALTIME, 0);
-          // }
           tft.println("Realtime");
           displayValue(realtime_filter);
           break;
 
         case 6:
-          // system_filter = EEPROM.read(EEPROM_SYSTEM);
-          // if (system_filter < 0 || system_filter > 1) {
-          //   EEPROM.write(EEPROM_SYSTEM, 0);
-          // }
           tft.println("System");
           displayValue(system_filter);
           break;
 
         case 7:
-          // controllers_filter = EEPROM.read(EEPROM_CONTROLLERS);
-          // if (controllers_filter < 0 || controllers_filter > 1) {
-          //   EEPROM.write(EEPROM_CONTROLLERS, 0);
-          // }
           tft.println("All");
           tft.setCursor(0, 50);
           tft.println("Controllers");
@@ -316,10 +284,6 @@ void updateDisplay() {
           break;
 
         case 8:
-          // active_filter = EEPROM.read(EEPROM_ACTIVE);
-          // if (active_filter < 0 || active_filter > 1) {
-          //   EEPROM.write(EEPROM_ACTIVE, 0);
-          // }
           tft.println("Active");
           tft.setCursor(0, 50);
           tft.println("Sense");
@@ -327,10 +291,6 @@ void updateDisplay() {
           break;
 
         case 9:
-          // sustain_filter = EEPROM.read(EEPROM_SUSTAIN);
-          // if (sustain_filter < 0 || sustain_filter > 1) {
-          //   EEPROM.write(EEPROM_SUSTAIN, 0);
-          // }
           tft.println("Sustain");
           tft.setCursor(0, 50);
           tft.println("Pedal");
@@ -338,10 +298,6 @@ void updateDisplay() {
           break;
 
         case 10:
-          // all_notes_off_filter = EEPROM.read(EEPROM_NOTES_OFF);
-          // if (all_notes_off_filter < 0 || all_notes_off_filter > 1) {
-          //   EEPROM.write(EEPROM_NOTES_OFF, 0);
-          // }
           tft.println("All Notes");
           tft.setCursor(0, 50);
           tft.println("Off");
@@ -591,65 +547,10 @@ void checkSwitches() {
       }
     }
   }
-
-  // if (selButton.fell()) {
-  //   selectPressTime = millis();
-  //   selectWasHeld = false;
-  // }
-  // if (selButton.rose()) {  // button released
-  //   if (!selectWasHeld) {
-  //     sendData = !sendData;
-  //     paramNumber = 0;
-  //     display_timer = millis();
-  //     oldparamNumber = -1;
-  //     if (data1Select) {
-  //       data1Select = !data1Select;
-  //       sendData = true;
-  //     }
-  //     if (data2Select) {
-  //       data2Select = !data2Select;
-  //     }
-  //   }
-  // }
-  // if (selButton.read() == LOW && !selectWasHeld) {
-  //   if (millis() - selectPressTime > holdThreshold) {
-  //     selectWasHeld = true;
-
-  //     if (!sendData) {
-  //       display_timer = millis();
-  //       updateParam();
-  //     }
-
-  //     if ((sendData && data1Select && data2Select && hasValue) || (sendData && data1Select && !data2Select && !hasValue)) {
-  //       sendMessage = true;
-  //       display_timer = millis();
-  //       oldparamNumber = -1;
-  //     }
-
-  //     if (sendData && data1Select && data2Select) {
-  //       sendMessage = true;
-  //       display_timer = millis();
-  //       oldparamNumber = -1;
-  //     }
-
-  //     if (sendData && data1Select && !data2Select && hasValue) {
-  //       data2Select = true;
-  //       display_timer = millis();
-  //       oldparamNumber = -1;
-  //     }
-
-  //     if (sendData && !data1Select && !data2Select) {
-  //       data1Select = true;
-  //       display_timer = millis();
-  //       oldparamNumber = -1;
-  //     }
-  //   }
-  // }
 }
 
 void displayIncoming(byte type, int16_t data1, int data2, byte channel) {
 
-  //if (refresh_screen) {
   tft.fillScreen(TFT_BLACK);
   tft.setCursor(0, 0);
   tft.setTextSize(1);
@@ -678,7 +579,7 @@ void displayIncoming(byte type, int16_t data1, int data2, byte channel) {
 
   tft.setCursor(0, 65);
   tft.print("Pressure");
-  //}
+
   refresh_screen = false;
 
 
